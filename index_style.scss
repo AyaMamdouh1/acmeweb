@@ -1,0 +1,240 @@
+$color-white:#fff;
+$color-black:black;
+$full-width:100%;
+$half-width:50%;
+$Q-width:25%;
+$float-left:left;
+$padding:1em; 
+$margin:1em;
+$color:#eaeaea;
+$blue-color:blue;
+$gray-color:#333 ;
+$babablue-color:#2690d4;
+$font-size:1em;
+$text-center:center;
+
+@mixin flex ($display,$just-content){
+    
+
+    display: $display;
+    justify-content: $just-content;
+    
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+@mixin header($color,$text-align,$num2){
+    color: $color;
+    text-align: $text-align;
+    font-size: $num2*$font-size;
+
+}
+header
+{
+    background: url("image/main-qimg-ecabfa2f8e63e0d05fd90f1a7b5785e6-c.jpg");
+    width: $full-width;
+    background-size: 100% 100%;
+    height: 400px;
+    opacity: 0.7;
+@include flex(flex,$text-center);
+
+      align-items: $text-center;
+      & div{
+          width: 50%;
+          
+       & h1
+       {
+        @include header($color-white,$text-center,2);
+        padding: 0.5*$padding
+       }
+       & .button
+       {
+           @include flex(flex,$text-center);
+           
+         & button
+       {
+         background-color:$gray-color ;
+         @include header($color-white,$text-center,1.1);
+         padding: 0.5*$padding;
+         padding-right: $padding;
+         padding-left: $padding;
+     
+     
+         &:hover
+         {
+             background-color: $color-white;
+             color: $color-black;
+         }
+     
+     }
+       }
+       & p
+       {
+         @include header($color-white,$text-center,1.1);
+         padding: 0.5*$padding;
+     
+       }
+      }
+
+ 
+}
+.section1
+{
+    padding: 2*$padding;
+    background-color: $color;
+    & h1
+    {
+        @include header($color-black,$text-center,1.5);
+
+;        padding-bottom: $padding;
+
+    }
+    & .layer
+    {
+       @extend %layer;
+        
+        @include flex(flex, center);
+
+        & .p1
+        {
+            margin-right: 40px;
+        }
+
+        & .p
+        {
+            width: $Q-width;
+            float: $float-left;
+            color:$color-black;
+font-weight: 700;   
+     }
+    }
+}  
+%layer
+{ width: 75%;
+    overflow: auto;
+    margin: auto;}
+@media (max-width:423px) {
+    .section1
+    {
+        &.p
+        {
+        float: none;}
+
+    }
+    .section2
+    {
+        & .div
+        {float: none;
+        width: 100%;}
+    }
+
+    .section4
+    {
+        float: none;
+
+width: $full-width;    }
+}
+.section2
+{
+    padding-top: 0px 2*$padding ;
+    background-color: $color-black;
+    & .layer
+    {
+        @extend %layer;
+                & div
+        {
+            width: 300px;
+            float: $float-left;
+            // padding: 0px $padding 0px 0px;
+            margin-right: $margin;
+            background-color: $color-white;
+            text-align: center;
+            & img  
+            {
+                width: 300px;
+                height: 200px;
+                padding-bottom: 3*$padding;
+            }
+            & h1
+            {padding-bottom:2*$padding;}
+            & p
+            {
+                padding-bottom: 3*$padding;
+                font-size: 26px;
+                color: $gray-color;
+            }
+        }
+    }
+}
+
+
+.section3
+{
+    padding: 4*$padding;
+    background-color: $color-white;
+    & h1
+    {
+        @include header($color-black,$text-center,1.5);
+
+      font-weight:bold;
+      padding-bottom: 2*$padding;
+    }
+    & p
+    {text-align: center;
+    font-size: 1.5*$font-size;}
+}
+.section4
+{overflow: auto;
+    & .div1
+    {background-color: $babablue-color;
+        @extend %section4-div;
+
+
+        & p
+        {
+            font-size:24px ;
+            padding-top: 2*$padding;
+        }
+    }
+    
+    & .div2
+    {
+    background-color: $gray-color;
+    @extend %section4-div;
+   
+     & p
+      {
+      font-size:24px ;
+      padding-top: 2*$padding;
+      }
+     }
+    
+}
+
+
+footer
+{
+@include flex(flex, space-around);
+background-color:$color-black;
+padding:  3*$padding 0px;
+color: $color-white;
+ & a
+ {
+     color: $blue-color;
+ }
+}
+%section4-div
+{
+        text-align: center;
+        padding: 5*$padding 2*$padding ;
+        color: $color-white;
+        width: $half-width;
+        float: $float-left;
+        height: 500px;
+}
+
